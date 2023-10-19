@@ -16,7 +16,7 @@ const FloatingAction = () => {
 
     return (
         <div className="fixed bottom-3 right-3 sm:hidden h-min w-min m-3">
-            <button className="flex items-center justify-center p-3 bg-slate-900 hover:bg-slate-800 text-white hover:text-sky-400 text-2xl font-bold rounded-lg h-12 w-12" onClick={clickHandler}>
+            <button className="flex items-center justify-center p-3 bg-slate-800 hover:bg-slate-600 text-sky-400 hover:text-sky-300 text-2xl font-bold rounded-lg h-12 w-12" onClick={clickHandler}>
                 <BiPlus/>
             </button>
         </div>

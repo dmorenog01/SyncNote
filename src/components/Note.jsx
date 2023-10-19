@@ -1,13 +1,13 @@
 import { deleteNote } from "../services/firestoreService"
 import { Notify } from "notiflix"
-
 import CustomSvgButton from "./CustomSVGButton"
-
 import CopySVG from '../assets/CopySVG'
 import TrashSVG from '../assets/TrashSVG'
+import CustomLink from './CustomLink'
 
 const Note = ({ note }) => {
     const { content, id } = note
+    const re = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g
     const copyHandler = () => {
         navigator.clipboard.writeText(content)
         Notify.success("Note Copied!")
@@ -20,7 +20,7 @@ const Note = ({ note }) => {
     return (
     <div className="flex flex-col w-64 p-3 bg-slate-900 text-slate-300 rounded-md drop-shadow-md">
         <div className="flex-grow mb-2">
-            {content}
+            {content.split(" ").map(f => { return re.test(f) ? <CustomLink link={f}/> : f + " "})}
         </div>
         <div className="flex justify-end">
             <CustomSvgButton onClick={copyHandler} buttonText='copy'><CopySVG/></CustomSvgButton>

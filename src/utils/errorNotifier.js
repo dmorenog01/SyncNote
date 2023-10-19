@@ -1,8 +1,7 @@
 import { Notify } from "notiflix"
 
 const errorNotifier = (errorName) => {
-    console.log(errorName)
-    let message
+    let message = ''
     switch (errorName) {
         case "auth/invalid-login-credentials":
             message = "Incorrect credentials!"
