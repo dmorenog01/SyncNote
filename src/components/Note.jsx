@@ -20,8 +20,8 @@ const Note = ({ note }) => {
     }
 
     return (
-    <div className="flex flex-col w-64 p-3 bg-slate-900 text-slate-300 rounded-md drop-shadow-md">
-        <div className="flex-grow mb-2">
+    <div className="flex flex-col box-border p-3 w-full xl:w-1/5 bg-slate-900 text-slate-300 rounded-md drop-shadow-md">
+        <div className="flex-grow mb-2 break-words">
             {content.split(" ").map(f => { return re.test(f) && !emailRe.test(f) ? <CustomLink link={f}/> : f + " "})}
         </div>
         <div className="flex justify-end">
