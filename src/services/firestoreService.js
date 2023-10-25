@@ -16,12 +16,11 @@ const saveNote = async (note) => {
         date: new Date()
     }
     try {
-        const document = await addDoc(collectionRef, toSave)
-        console.log('saved document with id', document.id);
+        await addDoc(collectionRef, toSave)
+        console.log('saved document');
     } catch (error) {
         console.error("Error adding document", error);
     }
-    // we want to save a new note under users/uid/notes/
     return toSave
 }
 

@@ -1,6 +1,7 @@
 import './index.css'
 import LoginRegister from './components/LoginRegister'
 import PasteCanvas from './components/PasteCanvas'
+import Logo from './components/Logo'
 import { auth, loginUser, logOut, registerUser } from './services/loginService'
 import { onAuthStateChanged } from 'firebase/auth'
 import { useState, useEffect } from "react"
@@ -50,8 +51,8 @@ const App = () => {
     if (currentUser) {
       return (
         <div className='p-3 h-screen  bg-slate-700'>
-          <div>
-            <h1 className='text-slate-300'>Hello, {currentUser.email} <button onClick={handleLogOut}>Log out</button></h1>
+          <div className='flex justify-between mx-2 mb-2'>
+            <Logo/><button className="font-semibold text-sky-400 hover:text-sky-600" onClick={handleLogOut}>Log out</button>
           </div>
           <PasteCanvas/> 
         </div>

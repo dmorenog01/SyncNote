@@ -53,11 +53,11 @@ const PasteCanvas = () => {
     
     return (
         <>
-            <div ref={canvasRef} className='grid grid-cols-1 gap-3 md:grid-cols-4 xl:grid-cols-5'>
+            <div ref={canvasRef} className='grid grid-cols-1 auto-rows-[192px] gap-3 md:grid-cols-4 xl:grid-cols-5'>
                 {notes && notes.map((note) => <Note key={note.id} note={note}/>)}
                 {notes.length == 0 && <NoNotes/>}
             </div>
-            <FloatingAction onTap={() => console.log('button press')}/>
+            <FloatingAction/>
         </>
     )
 }
