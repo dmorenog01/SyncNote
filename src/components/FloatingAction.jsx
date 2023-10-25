@@ -1,5 +1,5 @@
-import { saveNote } from "../services/firestoreService"
-import { Notify } from "notiflix"
+import { saveNote } from '../services/firestoreService'
+import { Notify } from 'notiflix'
 import { BiPlus } from 'react-icons/bi'
 
 const FloatingAction = () => {
@@ -7,7 +7,7 @@ const FloatingAction = () => {
     const clickHandler = async () => {
         let paste = await navigator.clipboard.readText()
         if (paste == false) {
-            Notify.failure("Can't create an empty note!")
+            Notify.failure('Can\'t create an empty note!')
             return
         }
         saveNote(paste)

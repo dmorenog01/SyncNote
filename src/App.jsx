@@ -2,9 +2,9 @@ import './index.css'
 import LoginRegister from './components/LoginRegister'
 import PasteCanvas from './components/PasteCanvas'
 import Logo from './components/Logo'
-import { auth, loginUser, logOut, registerUser } from './services/loginService'
+import { auth, loginUser, logOut, registerUser } from './services/authService'
 import { onAuthStateChanged } from 'firebase/auth'
-import { useState, useEffect } from "react"
+import { useState, useEffect } from 'react'
 import errorNotifier from './utils/errorNotifier'
 
 const App = () => {

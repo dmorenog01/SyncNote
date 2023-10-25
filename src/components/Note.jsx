@@ -1,9 +1,10 @@
-import { deleteNote } from "../services/firestoreService"
-import { Notify } from "notiflix"
-import CustomSvgButton from "./CustomSVGButton"
+import { deleteNote } from '../services/firestoreService'
+import { Notify } from 'notiflix'
+import CustomSvgButton from './CustomSVGButton'
 import CopySVG from '../assets/CopySVG'
 import TrashSVG from '../assets/TrashSVG'
 import CustomLink from './CustomLink'
+import { LogCustomEvent } from '../services/analyticsService'
 
 const Note = ({ note }) => {
     const { content, id } = note
@@ -12,17 +13,18 @@ const Note = ({ note }) => {
 
     const copyHandler = async () => {
         await navigator.clipboard.writeText(content)
-        Notify.success("Note Copied!")
+        Notify.success('Note Copied!')
+        LogCustomEvent('text_copied')
     }
     const deleteHandler = () => {
         deleteNote(id)
-        Notify.warning("The note has been deleted.")
+        Notify.warning('The note has been deleted.')
     }
 
     return (
     <div className="flex flex-col box-border p-3 bg-slate-900 text-slate-300 rounded-md drop-shadow-md">
         <div className="grow break-words overflow-auto p-1">
-            {content.split(" ").map((f, index) => { return re.test(f) && !emailRe.test(f) ? <CustomLink key={index} link={f}/> : f + " "})}
+            {content.split(' ').map((f, index) => { return re.test(f) && !emailRe.test(f) ? <CustomLink key={index} link={f}/> : f + ' '})}
         </div>
         <div className="flex justify-end">
             <CustomSvgButton onClick={copyHandler} buttonText='copy'><CopySVG/></CustomSvgButton>

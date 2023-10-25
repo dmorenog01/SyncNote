@@ -1,11 +1,11 @@
-import { useState, useEffect, useRef } from "react"
-import { collection, query, onSnapshot, orderBy } from "firebase/firestore"
-import { saveNote, firestore } from "../services/firestoreService"
-import { getCurrentUser } from "../services/loginService"
-import { Notify } from "notiflix"
-import Note from "./Note"
-import FloatingAction from "./FloatingAction"
-import NoNotes from "./NoNotes"
+import { useState, useEffect, useRef } from 'react'
+import { collection, query, onSnapshot, orderBy } from 'firebase/firestore'
+import { saveNote, firestore } from '../services/firestoreService'
+import { getCurrentUser } from '../services/authService'
+import { Notify } from 'notiflix'
+import Note from './Note'
+import FloatingAction from './FloatingAction'
+import NoNotes from './NoNotes'
 
 const PasteCanvas = () => {
     const canvasRef = useRef(null)
@@ -16,21 +16,20 @@ const PasteCanvas = () => {
 
         const pasteHandler = (event) => {
             event.preventDefault()
-            let paste = (event.clipboardData || window.clipboardData).getData("text")
+            let paste = (event.clipboardData || window.clipboardData).getData('text')
             if (paste == false || paste === prevPaste) {
-                Notify.failure("Can't create the same note twice!")
+                Notify.failure('Can\'t create the same note twice!')
                 return
             }
             saveNote(paste)
             Notify.success('Note has been saved!')
             prevPaste = paste
         }
-        // paste handler
         const element = canvasRef.current
-        element.addEventListener("paste", pasteHandler)
+        element.addEventListener('paste', pasteHandler)
 
         return () => {
-            element.removeEventListener("paste", pasteHandler);
+            element.removeEventListener('paste', pasteHandler);
         }
     }, [])
 

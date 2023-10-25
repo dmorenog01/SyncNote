@@ -12,6 +12,8 @@ module.exports = {
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh'],
   rules: {
+    'no-useless-escape': 0,
+    'quotes': ['error', 'single'],
     'react/prop-types': 0,
     'react-refresh/only-export-components': [
       'warn',
