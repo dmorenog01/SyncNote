@@ -7,7 +7,7 @@ import CustomLink from './CustomLink'
 
 const Note = ({ note }) => {
     const { content, id } = note
-    const re = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g
+    const re = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/g
     const emailRe = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b/
 
     const copyHandler = () => {
@@ -20,8 +20,8 @@ const Note = ({ note }) => {
     }
 
     return (
-    <div className="flex flex-col box-border p-3 w-full xl:w-1/5 bg-slate-900 text-slate-300 rounded-md drop-shadow-md">
-        <div className="flex-grow mb-2 break-words">
+    <div className="flex flex-col box-border p-3 bg-slate-900 text-slate-300 rounded-md drop-shadow-md">
+        <div className="grow break-words">
             {content.split(" ").map(f => { return re.test(f) && !emailRe.test(f) ? <CustomLink link={f}/> : f + " "})}
         </div>
         <div className="flex justify-end">
